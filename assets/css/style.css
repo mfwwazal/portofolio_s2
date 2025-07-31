@@ -1,0 +1,19 @@
+ html {
+    scroll-behavior: smooth;
+ }
+
+ img {
+    transform: transform 0.3s ease;
+ }
+
+ img:hover {
+    transform: scale(1.05);
+ }
+
+ .glow-text {
+    text-shadow: 0 0 10px #7c3aed, 0 0 20px #f472b6;
+ }
+
+ main {
+    padding-bottom: 5rem;
+ }

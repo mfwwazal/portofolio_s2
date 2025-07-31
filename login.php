@@ -1,0 +1,58 @@
+<?php
+session_start();
+require 'config/db.php';
+
+$error = '';
+
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    $query = mysqli_query($conn, "SELECT * FROM admin WHERE username = '$username'");
+    $user = mysqli_fetch_assoc($query);
+
+    if ($user && password_verify($password, $user['password'])) {
+        $_SESSION['login'] = true;
+        $_SESSION['user'] = $user['username'];
+        header("Location: dashboard.php");
+        exit;
+    } else {
+        $error = "Gagal memproses!";
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Fawwaz.dev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-slate-950 text-cyan-100 flex items-center justify-center min-h-screen">
+
+    <div class="bg-slate-900 p-8 rounded-lg shadow-xl w-full max-w-sm">
+        <button onclick="window.location.href='index.php'"
+            class="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-4xl font-extrabold transition-transform duration-200 hover:scale-125">
+            &times;
+        </button>
+        <h2 class="text-2xl font-bold text-center text-purple-400 mb-6">Login 👤</h2>
+
+        <?php if ($error): ?>
+            <p class="bg-red-500 text-white text-sm px-3 py-2 rounded mb-4 text-center"><?= $error ?>></p>
+        <?php endif; ?>
+
+        <form method="POST">
+            <label class="blok mb-2">Username</label>
+            <input type="text" name="username" required class="w-full p-2 rounded bg-slate-800 text-white mb-4 focus:outline-none focus:ring focus:ring-pink-400">
+            
+            <label class="blok mb-2">Password</label>
+            <input type="password" name="password" required class="w-full p-2 rounded bg-slate-800 text-white mb-4 focus:outline-none focus:ring focus:ring-pink-400">
+
+            <button type="submit" name="login" class="w-full bg-purple-600 hover:bg-pink-500 py-2 rounded text-white font-semibold transition">Masuk</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<?php
+require 'config/db.php';
+$certificates = mysqli_query($conn, "SELECT * FROM certificates ORDER BY tahun DESC");
+?>
+
+
+
+
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Fawwaz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-cyan-100 font-sans">
+    
+    <nav class="bg-slate-950 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-purple-400">Fawwaz.dev</h1>
+            <ul>
+                <li><a href="index.php" class="hover:text-pink-400">About</a></li>
+                <li><a href="skills.php" class="hover:text-pink-400">Skills</a></li>
+                <li><a href="projects.php" class="hover:text-pink-400">Projects</a></li>
+                <li><a href="certificates.php" class="hover:text-pink-400">Certificates</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center mb-10">My Certificates</h2>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    <?php while ($c = mysqli_fetch_assoc($certificates)): ?>
+    <div class="bg-slate-800 p-4 rounded-lg shadow-md hover:shadow-md hover:shadow-pink-400 transition duration-300">
+        <img src="<?= htmlspecialchars($c['gambar']) ?>" alt="Sertifikat" class="rounded-md mb-3 h-48 w-full object-cover">
+        <h3 class="text-lg font-semibold"><?= htmlspecialchars($c['nama']) ?></h3>
+        <p class="text-sm text-gray-400"><?= htmlspecialchars($c['tahun']) ?></p>
+    </div>
+    <?php endwhile; ?>
+</div>
+
+<?php if (mysqli_num_rows($certificates) === 0): ?>
+    <p class="text-center text-gray-500 col-span-3 italic">Belum ada sertifikat yang ditampilkan.</p>
+<?php endif; ?>
+
+    </main>
+
+    <footer class="bg-slate-950 text-center py-4 text-sm text-gray-400">
+        &copy; 2025 Fawwaz. All righst reserved
+    </footer>
+
+</body>
+</html>

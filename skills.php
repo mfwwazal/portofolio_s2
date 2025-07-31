@@ -1,0 +1,66 @@
+<?php
+require 'config/db.php';
+$skills = mysqli_query($conn, "SELECT * FROM skills ORDER BY persen DESC");
+
+
+
+function warnaSkill($level) {
+    return match(strtolower($level)) {
+        'beginner' => 'bg-red-400',
+        'intermediate' => 'bg-yellow-400',
+        'advanced' => 'bg-green-400',
+        default => 'bg-purple-400'
+    };
+}
+
+?>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills - Fawwaz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-900 text-cyan-100 font-sans">
+
+    <nav class="bg-slate-950 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-purple-400">Fawwaz.dev</h1>
+            <ul class="flex gap-4">
+                <li><a href="index.php" class="hover:text-pink-400">About</a></li>
+                <li><a href="skills.php" class="hover:text-pink-400 font-bold underline">Skills</a></li>
+                <li><a href="projects.php" class="hover:text-pink-400">Projects</a></li>
+                <li><a href="certificates.php" class="hover:text-pink-400">Certificates</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-6 py-16">
+        <h2 class="text-3xl font-bold text-center mb-10">My Skills</h2>
+
+<div class="space-y-6 max-w-2xl mx-auto">
+    <?php while ($s = mysqli_fetch_assoc($skills)): ?>
+    <div>
+        <h3 class="text-lg font-semibold"><?= htmlspecialchars($s['nama_skill']) ?> <span class="text-sm text-gray-400">[<?= $s['level'] ?>]</span></h3>
+        <div class="w-full bg-gray-700 rounded-full h-4">
+            <div class="<?= warnaSkill($s['level']) ?> h-4 rounded-full" style="width: <?= $s['persen'] ?>%"></div>
+        </div>
+    </div>
+    <?php endwhile; ?>
+</div>
+
+    </main>
+
+    <footer class="bg-gray-800 text-center py-4 text-sm text-gray-400">
+        &copy; 2025 Fawwaz. All rights reserved.
+    </footer>
+
+</body>
+</html>
