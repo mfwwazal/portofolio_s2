@@ -34,7 +34,7 @@ $certificates = mysqli_query($conn, "SELECT * FROM certificates ORDER BY tahun D
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
     <?php while ($c = mysqli_fetch_assoc($certificates)): ?>
     <div class="bg-slate-800 p-4 rounded-lg shadow-md hover:shadow-md hover:shadow-pink-400 transition duration-300">
-        <img src="<?= htmlspecialchars($c['gambar']) ?>" alt="Sertifikat" class="rounded-md mb-3 h-48 w-full object-cover">
+        <img src="assets/img/certificate/certificate1.png" alt="Sertifikat" class="rounded-md mb-3 h-48 w-full object-cover">
         <h3 class="text-lg font-semibold"><?= htmlspecialchars($c['nama']) ?></h3>
         <p class="text-sm text-gray-400"><?= htmlspecialchars($c['tahun']) ?></p>
     </div>

@@ -1,10 +1,3 @@
-<?php
-require 'config/db.php';
-$projects = mysqli_query($conn, "SELECT * FROM projects ORDER BY id DESC");
-?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,22 +25,105 @@ $projects = mysqli_query($conn, "SELECT * FROM projects ORDER BY id DESC");
         <h2 class="text-3xl font-bold text-center mb-10">My Projects</h2>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <?php while ($p = mysqli_fetch_assoc($projects)): ?>
-    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-pink-400 transition-all duration-300 hover:scale-105">
-        <?php if (!empty($p['gambar'])): ?>
-            <img src="<?= $p['gambar'] ?>" alt="<?= $p['judul'] ?>" class="w-full h-48 object-cover">
-        <?php else: ?>
-            <div class="w-full h-48 flex items-center justify-center bg-slate-700 text-slate-400 italic">
-                Tidak ada gambar
-            </div>
-        <?php endif; ?>
-        <div class="p-4">
-            <h3 class="text-xl font-semibold mb-2"><?= $p['judul'] ?></h3>
-            <p class="text-gray-400 text-sm"><?= $p['deskripsi'] ?></p>
-        </div>
+  <!-- Kartu Project -->
+  <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-pink-400 transition-all duration-300 hover:scale-105">
+    <img src="assets/img/project/project1.png" alt="Website Top Up Game" class="w-full h-48 object-cover">
+    <div class="p-4">
+      <h3 class="text-xl font-semibold mb-2">Website Top Up Game</h3>
+      <p class="text-gray-400 text-sm mb-2">🕹️ <strong>Top Up Games by Acil Store</strong></p>
+      <p class="text-gray-400 text-sm">
+        <strong>Deskripsi Proyek:</strong><br>
+        "Top Up Games by Acil Store" adalah platform digital yang saya rancang untuk memudahkan pengguna melakukan pembelian item atau mata uang dalam game populer seperti Mobile Legends, Free Fire, PUBG, Roblox, hingga Genshin Impact.
+      </p>
+      <p class="text-gray-400 text-sm mt-2">
+        Website ini hadir dengan tampilan <em>modern dark mode</em>, desain responsif, dan sistem checkout sederhana yang memudahkan pengguna dari berbagai perangkat — baik desktop maupun mobile.
+      </p>
     </div>
-    <?php endwhile; ?>
+  </div>
+
+  <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-pink-400 transition-all duration-300 hover:scale-105">
+    <img src="assets/img/project/project2.png" alt="Website Calculate Age" class="w-full h-48 object-cover">
+    <div class="p-4">
+      <h3 class="text-xl font-semibold mb-2">Website Calculate Age</h3>
+      <p class="text-gray-400 text-sm mb-2"><strong>📝 Deskripsi Projek: Website Hitung Usia</strong></p>
+      <p class="text-gray-400 text-sm">
+        <strong>Deskripsi Proyek:</strong><br>
+        Website Hitung Usia adalah sebuah aplikasi web sederhana namun fungsional yang saya buat untuk membantu pengguna menghitung usia mereka secara otomatis berdasarkan tanggal lahir. Dibangun menggunakan teknologi dasar web seperti HTML, CSS (Tailwind), dan PHP, website ini dapat menampilkan usia pengguna dalam format tahun, bulan, dan hari hanya dengan sekali klik.
+      </p>
+      <p class="text-gray-400 text-sm mt-2">
+        Website ini hadir dengan tampilan <em>modern light mode</em>, desain responsif, dan sistem hitung sederhana yang memudahkan pengguna dari berbagai perangkat — baik desktop maupun mobile.
+      </p>
+    </div>
+  </div>
+
+  <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-pink-400 transition-all duration-300 hover:scale-105">
+    <img src="assets/img/project/project3.png" alt="Website Scientific Calculator" class="w-full h-48 object-cover">
+    <div class="p-4">
+      <h3 class="text-xl font-semibold mb-2">Website Scientific Calculator</h3>
+      <p class="text-gray-400 text-sm mb-2"><strong>🧠 Deskripsi Projek: Website Kalkulator Ilmiah</strong></p>
+      <p class="text-gray-400 text-sm">
+        <strong>Deskripsi Proyek:</strong><br>
+        Website Kalkulator Ilmiah adalah aplikasi berbasis web yang dirancang untuk membantu pengguna melakukan perhitungan matematika lanjutan secara efisien dan akurat. Kalkulator ini tidak hanya mendukung operasi dasar seperti penjumlahan dan pengurangan, tetapi juga fitur-fitur ilmiah seperti trigonometri, logaritma, pangkat, akar, hingga fungsi eksponensial.
+      </p>
+      <p class="text-gray-400 text-sm mt-2">
+        Website ini hadir dengan tampilan <em>modern dark mode</em>, desain responsif, dan sistem hitung sederhana yang memudahkan pengguna dari berbagai perangkat — baik desktop maupun mobile.
+      </p>
+    </div>
+  </div>
+
+  <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-pink-400 transition-all duration-300 hover:scale-105">
+    <img src="assets/img/project/project5.png" alt="Website News Portal" class="w-full h-48 object-cover">
+    <div class="p-4">
+      <h3 class="text-xl font-semibold mb-2">Website News Portal</h3>
+      <p class="text-gray-400 text-sm mb-2"><strong>🗞️ Deskripsi Proyek: Website Portal Berita</strong></p>
+      <p class="text-gray-400 text-sm">
+        <strong>Deskripsi Proyek:</strong><br>
+        Website Portal Berita adalah platform digital yang saya bangun untuk menyajikan informasi dan berita terkini secara dinamis, terstruktur, dan mudah diakses. Website ini dirancang untuk menjadi sarana publikasi berita secara online, dengan tampilan modern dan sistem manajemen konten (CRUD) yang memudahkan pengelolaan artikel oleh admin.
+      </p>
+      <p class="text-gray-400 text-sm mt-2">
+        Website ini hadir dengan tampilan <em>modern light / dark mode</em>, desain responsif, dan sistem sederhana yang memudahkan pengguna dari berbagai perangkat — baik desktop maupun mobile.
+      </p>
+    </div>
+  </div>
+
+  <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-pink-400 transition-all duration-300 hover:scale-105">
+    <img src="assets/img/project/project6.png" alt="Mobile Apps Photo Profile" class="w-full h-48 object-cover">
+    <div class="p-4">
+      <h3 class="text-xl font-semibold mb-2">Mobile Apps Photo Profile</h3>
+      <p class="text-gray-400 text-sm mb-2"><strong>📸 Pengertian Mobile Apps Photo Profile</strong></p>
+      <p class="text-gray-400 text-sm">
+        <strong>Deskripsi Proyek:</strong><br>
+        Photo Profile dalam aplikasi mobile adalah fitur yang memungkinkan pengguna untuk menampilkan, mengubah, dan menyimpan gambar diri (profil) mereka sebagai identitas visual utama di dalam aplikasi.
+
+Fitur ini biasanya muncul dalam bentuk gambar lingkaran atau persegi yang dapat dilihat di halaman profil, halaman chat, daftar kontak, atau bar navigasi. Pengguna dapat memilih gambar dari galeri, mengambil foto langsung dari kamera, atau menggunakan avatar default.
+
+
+      </p>
+      <p class="text-gray-400 text-sm mt-2">
+        Mobile Apps ini hadir dengan tampilan <em>modern light mode</em>, Fitur photo profile adalah elemen penting dalam pengembangan aplikasi mobile modern karena menyatukan identitas, interaksi, dan estetika visual. Untuk pengembang, ini juga menjadi titik awal untuk belajar tentang pengambilan gambar, manajemen file, dan integrasi UI/UX dinamis.
+      </p>
+    </div>
+  </div>
+
+  <div class="bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-pink-400 transition-all duration-300 hover:scale-105">
+    <img src="assets/img/project/project4.png" alt="Website Army Cash Data" class="w-full h-48 object-cover">
+    <div class="p-4">
+      <h3 class="text-xl font-semibold mb-2">Website Army Cash Data</h3>
+      <p class="text-gray-400 text-sm mb-2"><strong>🪙 Pengertian Website Army Cash Data</strong></p>
+      <p class="text-gray-400 text-sm">
+        <strong>Deskripsi Proyek:</strong><br>
+        Army Cash Data adalah sebuah website manajemen data keuangan yang dirancang khusus untuk mengelola dan memantau aliran kas secara digital dalam sebuah komunitas, organisasi, atau tim. Website ini memungkinkan pengguna—khususnya bendahara atau pengelola keuangan—untuk mencatat pemasukan, pengeluaran, saldo akhir, serta laporan transaksi secara real-time dan terstruktur.
+
+</p>
+      <p class="text-gray-400 text-sm mt-2">
+        Mobile Apps ini hadir dengan tampilan <em>modern light mode</em>, Fitur photo profile adalah elemen penting dalam pengembangan aplikasi mobile modern karena menyatukan identitas, interaksi, dan estetika visual. Untuk pengembang, ini juga menjadi titik awal untuk belajar tentang pengambilan gambar, manajemen file, dan integrasi UI/UX dinamis.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tambahkan project lain di bawah sini jika perlu -->
 </div>
+
 
     </main>
 
