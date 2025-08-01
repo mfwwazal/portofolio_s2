@@ -3,7 +3,7 @@ session_start();
 require 'config/db.php';
 
 if (!isset($_SESSION['login'])) {
-    header("Location: login.php");
+    header("Location: login.html");
     exit;
 }
 
@@ -37,7 +37,7 @@ if (isset($_POST['tambah_skill'])) {
     $level = mysqli_real_escape_string($conn, $_POST['level']);
     $persen = (int) $_POST['persen'];
     mysqli_query($conn, "INSERT INTO skills (nama_skill, level, persen) VALUES ('$nama', '$level', $persen)");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
@@ -46,7 +46,7 @@ if (isset($_POST['tambah_project'])) {
     $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     $gambar = mysqli_real_escape_string($conn, $_POST['gambar']);
     mysqli_query($conn, "INSERT INTO projects (judul, deskripsi, gambar) VALUES ('$judul', '$deskripsi', '$gambar')");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
@@ -55,7 +55,7 @@ if (isset($_POST['tambah_certificate'])) {
     $gambar = mysqli_real_escape_string($conn, $_POST['gambar']);
     $tahun = (int) $_POST['tahun'];
     mysqli_query($conn, "INSERT INTO certificates (nama, gambar, tahun) VALUES ('$nama', '$gambar', $tahun)");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
@@ -66,7 +66,7 @@ if (isset($_POST['update_skill'])) {
     $level = mysqli_real_escape_string($conn, $_POST['level']);
     $persen = (int) $_POST['persen'];
     mysqli_query($conn, "UPDATE skills SET nama_skill='$nama', level='$level', persen=$persen WHERE id=$id");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
@@ -76,7 +76,7 @@ if (isset($_POST['update_project'])) {
     $deskripsi = mysqli_real_escape_string($conn, $_POST['deskripsi']);
     $gambar = mysqli_real_escape_string($conn, $_POST['gambar']);
     mysqli_query($conn, "UPDATE projects SET judul='$judul', deskripsi='$deskripsi', gambar='$gambar' WHERE id=$id");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
@@ -86,7 +86,7 @@ if (isset($_POST['update_certificate'])) {
     $gambar = mysqli_real_escape_string($conn, $_POST['gambar']);
     $tahun = (int) $_POST['tahun'];
     mysqli_query($conn, "UPDATE certificates SET nama='$nama', gambar='$gambar', tahun=$tahun WHERE id=$id");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
@@ -94,21 +94,21 @@ if (isset($_POST['update_certificate'])) {
 if (isset($_POST['hapus_skill'])) {
     $id = (int) $_POST['hapus_skill_id'];
     mysqli_query($conn, "DELETE FROM skills WHERE id=$id");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
 if (isset($_POST['hapus_project'])) {
     $id = (int) $_POST['hapus_project_id'];
     mysqli_query($conn, "DELETE FROM projects WHERE id=$id");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 
 if (isset($_POST['hapus_certificate'])) {
     $id = (int) $_POST['hapus_certificate_id'];
     mysqli_query($conn, "DELETE FROM certificates WHERE id=$id");
-    header("Location: dashboard.php");
+    header("Location: dashboard.html");
     exit;
 }
 ?>
@@ -124,7 +124,7 @@ if (isset($_POST['hapus_certificate'])) {
 <body class="bg-slate-950 text-white">
     <nav class="bg-slate-900 p-4 shadow-md flex justify-between">
         <h1 class="text-purple-400 font-bold text-lg">Dashboard Admin</h1>
-        <a href="logout.php" class="text-pink-400 hover:underline">Logout</a>
+        <a href="logout.html" class="text-pink-400 hover:underline">Logout</a>
     </nav>
 
     <main class="container mx-auto px-6 py-10 space-y-10">
@@ -181,7 +181,7 @@ if (isset($_POST['hapus_certificate'])) {
         </section>
 
         <section class="mb-12">
-    <form method="POST" action="dashboard.php" class="mb-6 bg-slate-900 p-4 rounded shadow-md">
+    <form method="POST" action="dashboard.html" class="mb-6 bg-slate-900 p-4 rounded shadow-md">
         <h3 class="text-lg font-semibold text-purple-300 mb-4">Tambah Project</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <input type="text" name="judul" placeholder="Judul Project" required class="p-2 rounded bg-slate-800 text-white">
@@ -233,7 +233,7 @@ if (isset($_POST['hapus_certificate'])) {
                     </td>
                     <td class="p-2">
                         <div class="flex justify-center gap-2">
-                            <a href="dashboard.php?edit_project=<?= $p['id'] ?>" class="text-yellow-300 hover:underline">Edit</a>
+                            <a href="dashboard.html?edit_project=<?= $p['id'] ?>" class="text-yellow-300 hover:underline">Edit</a>
                             <form method="POST" onsubmit="return confirm('Yakin mau hapus project ini?')" class="inline">
                                 <input type="hidden" name="hapus_project_id" value="<?= $p['id'] ?>">
                                 <button type="submit" name="hapus_project" class="text-red-400 hover:text-red-600">Hapus</button>
@@ -249,7 +249,7 @@ if (isset($_POST['hapus_certificate'])) {
 
 
 <section class="mb-12">
-    <form method="POST" action="dashboard.php" class="mb-6 bg-slate-900 p-4 rounded shadow-md">
+    <form method="POST" action="dashboard.html" class="mb-6 bg-slate-900 p-4 rounded shadow-md">
         <h3 class="text-lg font-semibold text-purple-300 mb-4">Tambah Certificate</h3>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <input type="text" name="nama" placeholder="Nama Sertifikat" required class="p-2 rounded bg-slate-800 text-white">
@@ -301,7 +301,7 @@ if (isset($_POST['hapus_certificate'])) {
                     <td class="p-2"><?= $c['tahun'] ?></td>
                     <td class="p-2">
                         <div class="flex justify-center gap-2">
-                            <a href="dashboard.php?edit_certificate=<?= $c['id'] ?>" class="text-yellow-300 hover:underline">Edit</a>
+                            <a href="dashboard.html" class="text-yellow-300 hover:underline">Edit</a>
                             <form method="POST" onsubmit="return confirm('Yakin mau hapus certificate ini?')" class="inline">
                                 <input type="hidden" name="hapus_certificate_id" value="<?= $c['id'] ?>">
                                 <button type="submit" name="hapus_certificate" class="text-red-400 hover:text-red-600">Hapus</button>

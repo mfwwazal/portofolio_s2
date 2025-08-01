@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['login'] = true;
         $_SESSION['user'] = $user['username'];
-        header("Location: dashboard.php");
+        header("Location: dashboard.html");
         exit;
     } else {
         $error = "Gagal memproses!";
@@ -33,7 +33,7 @@ if (isset($_POST['login'])) {
 <body class="bg-slate-950 text-cyan-100 flex items-center justify-center min-h-screen">
 
     <div class="bg-slate-900 p-8 rounded-lg shadow-xl w-full max-w-sm">
-        <button onclick="window.location.href='index.php'"
+        <button onclick="window.location.href='index.html'"
             class="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-4xl font-extrabold transition-transform duration-200 hover:scale-125">
             &times;
         </button>
